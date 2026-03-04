@@ -48,7 +48,7 @@ az ad app show --id
 az ad app credential reset --id 6291eaf4-9e40-4ffc-be9b-fd02b9f7c241 --append
 
 # Log as the app
-az login --service-principal -u d8911518-0ebd-4cde-a75b-ebf7a8d36ede -t fdd066e1-ee37-49bc-b08f-d0e152119b04 -p 'ofV8Q~U_ClSpU1pAFfn-Egk.aWBrnytIRkmlKc_b'
+az login --service-principal -u d8911518-0ebd-4cde-a75b-ebf7a8d36ede -t fdd066e1-ee37-49bc-b08f-d0e152119b04 -p <password>
 ```
 
 Check Keyvault content:
@@ -106,7 +106,7 @@ az ad sp show --id
 az ad sp credential reset --id <sp-id> --append
 
 # Log as the app
-az login --service-principal -u d8911518-0ebd-4cde-a75b-ebf7a8d36ede -t fdd066e1-ee37-49bc-b08f-d0e152119b04 -p 'ofV8Q~U_ClSpU1pAFfn-Egk.aWBrnytIRkmlKc_b'
+az login --service-principal -u d8911518-0ebd-4cde-a75b-ebf7a8d36ede -t fdd066e1-ee37-49bc-b08f-d0e152119b04 -p <password>
 ```
 
 ## microsoft.directory/groups/members/update
