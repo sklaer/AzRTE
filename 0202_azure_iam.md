@@ -34,10 +34,19 @@ For role definition
 ## Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials/write
 
 [Documentation](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect)
+[Azure Login Actions](https://github.com/Azure/login?tab=readme-ov-file#login-with-openid-connect-oidc-recommended)
+
+Create the github action in `.github/workflow/<action_name>.yml`
 
 ```sh
 az rest --method PUT \
-  --uri "https://management.azure.com/subscriptions/cd9959a7-8b38-4902-897b-267815e9f42f/resourceGroups/iam-azure-labs/providers/Microsoft.ManagedIdentity/userAssignedIdentities/iam-azure-lab-3-identity" \
+  --uri "https://management.azure.com/subscriptions/cd9959a7-8b38-4902-897b-267815e9f42f/resourceGroups/iam-azure-labs/providers/Microsoft.ManagedIdentity/userAssignedIdentities/iam-azure-lab-3-identity/federatedIdentityCredentials/pwnfederatecreds?api-version=2023-01-31" \
   --headers "Content-Type=application/json" \
   --body '{"properties":{"issuer":"https://token.actions.githubusercontent.com","subject":"repo:sklaer/AzRTE:ref:refs/heads/main","audiences":["api://AzureADTokenExchange"]}}'
 ```
+
+Then create the following GitHub environment secrets :
+
+- `AZURE_CLIENT_ID`: the service principal client ID or user-assigned managed identity client ID => `az identity list`
+- `AZURE_SUBSCRIPTION_ID`: the subscription ID
+- `AZURE_TENANT_ID`: the tenant ID
