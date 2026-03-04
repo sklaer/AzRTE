@@ -20,5 +20,4 @@ jobs:
               with:
                   azcliversion: latest
                   inlineScript: |
-                      az account show
-                      az storage account list
+                      az resource list
