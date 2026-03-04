@@ -25,3 +25,7 @@ jobs:
 
                       echo "Check blob"
                       az storage blob list --account-name iamazurelab3d090e49d --auth-mode login -c flag
+
+                      echo "Get flag"
+                      az storage blob list --account-name iamazurelab3d090e49d --auth-mode login -c flag -n flag.txt -f ./flag.txt
+                      cat ./flag.txt 
