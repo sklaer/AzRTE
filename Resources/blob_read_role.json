@@ -1,0 +1,20 @@
+    {
+        "roleName": "d090e49d-iam-lab-2-storage",
+        "Name": "30055553-44a1-85a5-13c8-a7937e1d6bd7",
+        "IsCustom": true,
+        "Description": "ReadData",
+        "Actions": [
+            "Microsoft.Storage/storageAccounts/read",
+            "Microsoft.Storage/storageAccounts/blobServices/read",
+            "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+        ],
+        "NotActions": [],
+        "DataActions": [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ],
+        "NotDataActions": [],
+        "AssignableScopes": [
+            "/subscriptions/cd9959a7-8b38-4902-897b-267815e9f42f/resourceGroups/iam-azure-labs/providers/Microsoft.Storage/storageAccounts/iamazurelab2d090e49d"
+        ],
+        "id": "/subscriptions/cd9959a7-8b38-4902-897b-267815e9f42f/providers/Microsoft.Authorization/roleDefinitions/30055553-44a1-85a5-13c8-a7937e1d6bd7"
+    }
