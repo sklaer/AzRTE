@@ -1,4 +1,4 @@
-name: Run Azure CLI Login with OpenID Connect
+name: TEST OICD
 on: [push]
 
 jobs:
@@ -20,5 +20,8 @@ jobs:
               with:
                   azcliversion: latest
                   inlineScript: |
-                      echo "Check resources"
-                      az resource list
+                      echo "Check container"
+                      az storage container list --account-name iamazurelab3d090e49d --auth-mode login
+
+                      echo "Check blob"
+                      az storage blob list --account-name iamazurelab3d090e49d --auth-mode login -c flag
