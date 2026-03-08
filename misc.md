@@ -38,4 +38,6 @@ az rest --method GET --uri "https://management.azure.com/subscriptions/<subscrip
 
 ```sh
 python3 AzurePEAS.py --use-username-password --username <username/sp_id> --password <password> --tenant-id fdd066e1-ee37-49bc-b08f-d0e152119b04
+
+python3 AzurePEAS.py --arm-token $ARM --graph-token $GRAPH
 ```
