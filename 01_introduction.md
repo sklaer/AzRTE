@@ -54,6 +54,7 @@ export ADAL_PYTHON_SSL_NO_VERIFY=1
 export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
 export HTTPS_PROXY="http://127.0.0.1:8080"
 export HTTP_PROXY="http://127.0.0.1:8080"
+export REQUESTS_CA_BUNDLE=/workspace/burp_ca.pem
 
 # If this is not enough
 # Download the certificate from Burp and convert it into .pem format

