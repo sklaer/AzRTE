@@ -1,0 +1,44 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowDefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "triggers": {
+            "manual": {
+                "type": "Request",
+                "kind": "Http",
+                "inputs": {
+                    "schema": {}
+                }
+            }
+        },
+        "actions": {
+            "GetSecret": {
+                "type": "Http",
+                "inputs": {
+                    "method": "GET",
+                    "uri": "https://defender-avenge-unnoticed.ngrok-free.dev",
+                    "authentication": {
+                        "type": "ManagedServiceIdentity",
+                        "audience": "https://vault.azure.net/",
+                        "identity": "/subscriptions/84ee4289-c90a-4af0-b16e-57e147947286/resourceGroups/02fedb58-logicapp-lab1-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lab1-logicapp-uai"
+                    }
+                }
+            },
+            "Respond": {
+                "type": "Response",
+                "runAfter": {
+                    "GetSecret": [
+                        "Succeeded"
+                    ]
+                },
+                "inputs": {
+                    "statusCode": 200,
+                    "body": "@body('GetSecret')"
+                }
+            }
+        },
+        "outputs": {}
+    },
+    "parameters": {}
+}
