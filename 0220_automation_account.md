@@ -78,7 +78,7 @@ az rest --method PUT \
 }`
 
 # Get job output
-az automation jobs list
+az automation job list --resource-group automation-lab-3 --automation-account-name automation-labs-3-02fedb58
 az rest --method GET --url "https://management.azure.com/subscriptions/84ee4289-c90a-4af0-b16e-57e147947286/resourcegroups/automation-lab-3/providers/Microsoft.Automation/automationAccounts/automation-labs-3-02fedb58/jobs/a6b3945f-fb29-448e-a1dd-5a7e15bcec3f/output?api-version=2023-11-01"
 
 az rest --method GET --url "https://management.azure.com/subscriptions/84ee4289-c90a-4af0-b16e-57e147947286/resourcegroups/automation-lab-3/providers/Microsoft.Automation/automationAccounts/automation-labs-3-02fedb58/credentials?api-version=2023-11-01"

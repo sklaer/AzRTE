@@ -83,25 +83,35 @@ docker run --rm -v $(pwd):/mnt mcr.microsoft.com/appsvc/staticappsclient:stable 
 ```sh
 az staticwebapp list
 
+az staticwebapp update --name static-web-app-lab-4-d4bcd1d7 --resource-group static-web-app-labs --source https://github.com/sklaer/staticapp-test -b main
+
+# Fork https://github.com/staticwebdev/vanilla-basic, then change index.html and package.json
+
+# Use ngrok with CORS bypass header and socat to handle multiple connections
+socat - TCP-LISTEN:80,fork,reuseaddr
+ngrok http --host-header=rewrite 80
+
 # Repository token needs Action, Content, Secret and Workflow R/W (+ metadata R)
-az rest --method put \
-  --url "https://management.azure.com/subscriptions/84ee4289-c90a-4af0-b16e-57e147947286/resourceGroups/static-web-app-labs/providers/Microsoft.Web/staticSites/static-web-app-lab-4-02fedb58?api-version=2022-09-01" \
-  --body '{
-    "location": "centralus",
-    "properties": {
-    "allowConfigFil­eUpdates": true,
-    "stagingEnviron­mentPolicy": "Enabled",
-    "buildProperties": {
-        "appLocation": "/",
-        "apiLocation": "",
-        "appArtifactLoc­ation": "build"
-    },
-    "repositoryToken": "YOUR_CLASSIC_T­OKEN_HERE",
-    "repositoryUrl": "https://github.com/sklaer/staticapp-test",
-    "branch": "main",
-    "deploymentAuth­Policy": "GitHub",
-    "provider": "GitHub"
-}'
+az rest --method PUT \
+    --url "https://management.azure.com/subscriptions/f87b35a1-a3c1-44ea-8d37-e3a3e23aea64/resourceGroups/static-web-app-labs/providers/Microsoft.Web/staticSites/static-web-app-lab-4-d4bcd1d7?api-version=2022-09-01" \
+    --headers 'Content-Type=application/json' \
+    --body '{
+        "location": "centralus",
+        "properties": {
+            "allowConfigFileUpdates": true,
+            "stagingEnvironmentPolicy": "Enabled",
+            "buildProperties": {
+                "appLocation": "/",
+                "apiLocation": "",
+                "appArtifactLocation": "build"
+            },
+            "repositoryToken": <PAT>,
+            "repositoryUrl": "https://github.com/sklaer/statix",
+            "branch": "main",
+            "deploymentAuthPolicy": "GitHub",
+            "provider": "GitHub"
+        }
+    }'
 ```
 
 ## Invite a user
